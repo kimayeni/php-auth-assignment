@@ -1,11 +1,11 @@
 <?php
-require 'config.php'; //
+require 'config.php'; 
 
 $errors = [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    // Get form data
+    // Getting form data
     $username = trim($_POST['username']);
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
         $stmt->execute([$username, $email, $hashedPassword]);
 
-        // Redirect to login page
+        // Redirecting to login page
         header("Location: login.php");
         exit();
     }
@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <h2>Register</h2>
 
-<!-- Show Errors -->
+<!-- Showing Errors -->
 <?php
 if (!empty($errors)) {
     foreach ($errors as $error) {
