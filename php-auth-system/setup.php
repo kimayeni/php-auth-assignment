@@ -1,21 +1,21 @@
 <?php
 $host = "localhost";
 $user = "root";
-$pass = ""; // default for XAMPP
+$pass = "";
 
 try {
-    // Connect to MySQL (no database yet)
+    // Connecting to MySQL (no database yet)
     $pdo = new PDO("mysql:host=$host", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Create database
+    // Creating database
     $pdo->exec("CREATE DATABASE IF NOT EXISTS php_auth_db");
     echo "Database created successfully<br>";
 
-    // Connect to the new database
+    // Connecting to the new database
     $pdo->exec("USE php_auth_db");
 
-    // Create users table
+    // Creating users table
     $sql = "CREATE TABLE IF NOT EXISTS users (
         id INT AUTO_INCREMENT PRIMARY KEY,
         username VARCHAR(50) UNIQUE NOT NULL,
@@ -26,7 +26,7 @@ try {
 
     $pdo->exec($sql);
 
-    echo "Users table created successfully";
+    echo "User's table created successfully";
 
 } catch (PDOException $e) {
     die("Error: " . $e->getMessage());
